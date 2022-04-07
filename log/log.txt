@@ -83,3 +83,4 @@
 2022-04-07 13:35:03.382644;::1;/fredi/inscription.php;;pseudo=;password=;
 2022-04-07 13:35:19.646150;::1;/fredi/inscription.php;;pseudo=;password=;
 2022-04-07 13:35:32.062555;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
+2022-04-07 13:52:36.371581;::1;/fredi/inscription.php;;pseudo=;password=;
