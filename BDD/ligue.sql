@@ -1,11 +1,4 @@
 USE `fredi21`; 
-
-
-
-
-
-
-
 DROP TABLE if EXISTS ligue ;
 CREATE TABLE `ligue` (
   `id_ligue` int(11) NOT NULL PRIMARY KEY,
