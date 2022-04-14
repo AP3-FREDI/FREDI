@@ -34,8 +34,8 @@ if ($action != '') {
             $insert_get = urldecode($insert_get);
             $insert_get = json_decode($insert_get, 1);
             $insert_get[0] = $insert_get;
-            //    $pseudo = 'd.dutertre';
-            //    $password = 'Azertyuiop1234.';
+            $pseudo = 'd.dutertre';
+            $password = 'Azertyuiop1234.';
             //On rentre la requête sql dans une variable
             //Lecture du pseudo dans la BDD 
             try {
@@ -56,23 +56,29 @@ if ($action != '') {
             try {
                 $sth = $dbh->prepare('select id_utilisateur from utilisateur where pseudo=:pseudo ');
                 $sth->execute(array(":pseudo" => $pseudo));
-                $id_utilisateur = $sth->fetch(PDO::FETCH_ASSOC);
+                $id_utilisateur = $sth->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
             }
+         //   print_r($id_utilisateur);
             $result['id_utilisateur'] = $id_utilisateur;
+
+         
             try {
-                $sth = $dbh->prepare('select id_note ,id_periode from note where id_utilisateur =:id_utilisateur ');
-                $sth->execute(array(":id_utilisateur" => $id_utilisateur['id_utilisateur']));
+                $sth = $dbh->prepare('select id_note ,id_periode from note where id_utilisateur =:id_utilisateur');
+                $sth->execute(array(":id_utilisateur" =>  $result['id_utilisateur'][0]['id_utilisateur']));
                 $id_note = $sth->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
             }
             $i = 0;
-            foreach ($id_note as $notes) {
-                $i++;
-                print_r($notes);
 
+        //  print_r($id_note);
+
+            foreach ($id_note as $notes) {
+                
+               
+              //  print_r($notes);
 
                 $result['id_note'] = $notes['id_note'];
                 try {
@@ -90,7 +96,7 @@ if ($action != '') {
                     die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
                 }
 
-                print_r($ligne);
+           //     print_r($ligne);
 
                 try {
                     $sth = $dbh->prepare('select lib_motif from motif where id_motif =:id_motif ');
@@ -111,6 +117,8 @@ if ($action != '') {
 
                 $result['periode'] = $periode;
                 $result['ligne'] = $ligne;
+                
+                
             }
 
             //    print_r($id_note);
