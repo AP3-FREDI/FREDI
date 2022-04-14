@@ -29,7 +29,7 @@ Connexion en administrateur
 Connexion en controleur
 * Login: d.dutertre
 * Adresse mail: damien.dutertre@fredi.com
-* Mot de passe: Damien1234*
+* Mot de passe: Azertyuiop1234.
 
 Rôles dans la base utilisateur : 
 * Administrateur: 1
