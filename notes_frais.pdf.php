@@ -69,33 +69,40 @@ $pdf->SetFont('Times', 'B', 11);
 $pdf->Cell(80,10,utf8_decode('Frais de déplacement'),0,0,'L');
 
 $pdf->SetFont('Times', '', 11);
-$pdf->Cell(80,10,utf8_decode('Tarif kilométrique appliqué pour le remboursement'),0,0,'C');
+$pdf->Cell(80,10,utf8_decode('Tarif kilométrique appliqué pour le remboursement : 0.28 '),0,0,'C');
 $pdf->SetTextColor(0, 0, 0); // Noir
 $pdf->Ln(8); // saut de ligne
 
 // Entête
-$pdf->SetFont('Times', '', 9);
+$pdf->SetFont('Times', '', 6);
 $pdf->SetFont('', 'B');
 $pdf->SetX(8);
 $pdf->SetFillColor(211,211,211);
-$pdf->Cell(29, 8, utf8_decode("Date jj/mm/aaaa"), 1,0,"C");
-$pdf->Cell(15, 8, utf8_decode("Motif"), 1,0,"C");
-$pdf->Cell(30, 8, utf8_decode("Kms parcourus"), 1,0,"C");
+$pdf->Cell(16, 8, utf8_decode("Date"), 1,0,"C");
+$pdf->Cell(20, 8, utf8_decode("Motif"), 1,0,"C");
+$pdf->Cell(23, 8, utf8_decode("Trajet"), 1,0,"C");
+$pdf->Cell(20, 8, utf8_decode("Kms parcourus"), 1,0,"C");
 $pdf->Cell(30, 8, utf8_decode("Total frais Kms"), 1,0,"C");
 $pdf->Cell(20, 8, utf8_decode("Coût péages"), 1,0,"C");
 $pdf->Cell(20, 8, utf8_decode("Coût repas"), 1,0,"C");
 $pdf->Cell(34, 8, utf8_decode("Coût hébergement"), 1,0,"C");
 $pdf->Cell(16, 8, utf8_decode("Total"), 1,1,"C");
 // Contenu
+$final=0;
 foreach ($lignes as $ligne) {
+
+    $final += $ligne["mt_total"];
+    $totfrai = $ligne["mt_km"]*$ligne["nb_km"];
+    
     $pdf->SetFont('', '');
     $pdf->SetX(8);
     $pdf->SetFillColor(177,254,152);
-    $pdf->Cell(29,8, utf8_decode($ligne["dat_ligne"]),1,0,"C",true);   
-    $pdf->Cell(15,8, utf8_decode($ligne["lib_trajet"]),1,0,"C",true);
-    $pdf->Cell(30,8, utf8_decode($ligne["nb_km"]),1,0,"C",true);
+    $pdf->Cell(16,8, utf8_decode($ligne["dat_ligne"]),1,0,"C",true);
+    $pdf->Cell(20,8, utf8_decode($ligne["lib_motif"]),1,0,"C",true); 
+    $pdf->Cell(23,8, utf8_decode($ligne["lib_trajet"]),1,0,"C",true);
+    $pdf->Cell(20,8, utf8_decode($ligne["nb_km"]),1,0,"C",true);
     $pdf->SetFillColor(133,241,238); 
-    $pdf->Cell(30,8, utf8_decode($ligne["mt_km"]),1,0,"C",true);
+    $pdf->Cell(30,8, utf8_decode($totfrai),1,0,"C",true);
     $pdf->SetFillColor(177,254,152);
     $pdf->Cell(20,8, utf8_decode($ligne["mt_peage"]),1,0,"C",true);
     $pdf->Cell(20,8, utf8_decode($ligne["mt_repas"]),1,0,"C",true);
@@ -109,7 +116,7 @@ $pdf->SetFont('Times', 'B', 9);
 $pdf->Cell(178, 8, utf8_decode("Montant total des frais de déplacement"), 1,0,"C");
 $pdf->SetFont('Times', '', 9);
 $pdf->SetFillColor(133,241,238); 
-$pdf->Cell(16,8, utf8_decode($montant["sum_montant"]),1,1,"C",true);
+$pdf->Cell(21,8, utf8_decode($final),1,1,"C",true);
 
 
 // Licence
@@ -129,7 +136,7 @@ $pdf->SetFont('Times', 'B', 11);
 $pdf->Cell(80,10,utf8_decode('Montant total des dons'),0,0,'L');
 $pdf->SetFont('Times', '', 11);
 $pdf->SetFillColor(177,254,152);
-$pdf->Cell(0,10,utf8_decode($ligne["mt_total"]),0,0,'C',true);
+$pdf->Cell(0,10,utf8_decode($final),0,0,'C',true);
 
 
 $pdf->Ln(10); // saut de ligne

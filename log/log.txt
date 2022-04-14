@@ -84,3 +84,8 @@
 2022-04-07 13:35:19.646150;::1;/fredi/inscription.php;;pseudo=;password=;
 2022-04-07 13:35:32.062555;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
 2022-04-07 13:52:36.371581;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:53:33.195373;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:02:18.514692;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:02:36.990326;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:04:44.503318;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
+2022-04-14 13:48:26.036293;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;

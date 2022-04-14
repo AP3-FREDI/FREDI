@@ -60,7 +60,7 @@ try {
 }
 
 // Requete pour afficher le tableau
-$sql = 'select * from ligne, note where ligne.id_note=note.id_note and id_utilisateur=:id_utilisateur';
+$sql = 'select * from ligne, note, motif where ligne.id_note=note.id_note and id_utilisateur=:id_utilisateur and motif.id_motif = ligne.id_motif';
 
 try {
   $sth = $dbh->prepare($sql);
