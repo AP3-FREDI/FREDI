@@ -21,13 +21,13 @@ if ($action != '') {
 
     switch ($action) {
 
-        case 'login':
+        case 'login': /* detecte la connexion */
 
-            $result = array('status' => 0, 'msg' => _('session'));
+            $result = array('status' => 0, 'msg' => _('session')); /* Statut 0 = session lancer */
             // $insert_get = isset($_GET['login']) ? $_GET['login'] : '';
             $pseudo = isset($_GET['pseudo']) ? $_GET['pseudo'] : '';
             $password = isset($_GET['password']) ? $_GET['password'] : '';
-            $insert_get = urldecode($insert_get);
+            $insert_get = urldecode($insert_get); /* recupere les valeurs pseudo et password */
 
 
             //   $pseudo = 'd.dutertre';
