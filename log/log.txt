@@ -74,6 +74,7 @@
 2022-01-06 13:35:51.907341;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
 2022-01-06 15:14:13.098315;::1;/fredi/inscription.php;;pseudo=;password=;
 2022-01-06 15:14:28.381061;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
+<<<<<<< HEAD
 2022-03-17 14:02:22.390035;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
 2022-03-17 14:02:36.719120;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
 2022-03-17 14:02:44.484814;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
@@ -101,3 +102,20 @@
 2022-04-14 14:37:56.886020;::1;/fredi/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
 2022-04-14 14:38:04.500367;::1;/fredi/connexion_validation.php;;pseudo=d.dutertre;password=Azertyuiop1234.;
 2022-05-29 23:14:24.876059;::1;/fredi/connexion_validation.php;;pseudo=d.dutertre;password=Azertyuiop1234.;
+=======
+2022-01-06 16:12:37.970703;::1;/FREDI/connexion_validation.php;;pseudo=damien123;password=Azertyuiop1234.;
+2022-01-06 16:12:54.217677;::1;/FREDI/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop.;
+2022-01-06 16:13:10.160560;::1;/FREDI/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
+2022-01-06 16:42:56.389296;::1;/FREDI/connexion_validation.php;;pseudo=damien1234;password=Azertyuiop1234.;
+2022-04-07 13:32:57.212219;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:34:24.933882;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:35:03.382644;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:35:19.646150;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:35:32.062555;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
+2022-04-07 13:52:36.371581;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 13:53:33.195373;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:02:18.514692;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:02:36.990326;::1;/fredi/inscription.php;;pseudo=;password=;
+2022-04-07 14:04:44.503318;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
+2022-04-14 13:48:26.036293;::1;/fredi/connexion_validation.php;;pseudo=R.becker;password=Rome1234*;
+>>>>>>> b7817a19230b9c3b435f205676d370a7fbaa4f58

@@ -52,10 +52,12 @@ include 'sql.php'; ?>
             <td><label for="ligue">Ligue* : </label></td>
             <td>
                 <select name="ligue" id="ligue">
-                    <option value="1" selected="selected">Ligue de basket</option>
-                    <option value="2">Ligue de volley</option>
-                    <option value="3">Ligue de handball</option>
-                    <option value="4">Ligue de football</option>
+                    <option value="1">Ligue de Judo Auvergne-Rhône-Alpes</option>
+                    <option value="2">Ligue de footbal de Haute-Garonne</option>
+                    <option value="3">Ligue de footbal Aquitaine</option>
+                    <option value="4">Ligue de tennis de Corse du Sud</option>
+                    <object value="5">Ligue équitation du Var</object>
+                    <object value="6">Ligue de natation du Quercy</object>
                 </select>
             </td>
             </tr>

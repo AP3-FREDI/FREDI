@@ -63,78 +63,78 @@ echo $newphrase= str_replace("Ligue de","Club",$ligue1["lib_ligue"]);
 
 $pdf->setY(61);
 $pdf->setX(60);
-$pdf->Cell(4, 3, $newphrase,  0, "R", true);
+$pdf->Cell(4, 3, utf8_decode($newphrase),  0, "R", true);
 //coche la case 
 $pdf->SetTextColor(0, 0, 0);
 $pdf->setY(79.8);
 $pdf->setX(12);
 $pdf->Cell(4, 3,  'X', 0, "R", true);
 
-$pdf->setY(84.8);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(90.6);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(99.6);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(105.4);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(115.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(123.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(132.8);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(138.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(148.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(153.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(158.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
+//$pdf->setY(84.8);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(90.6);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(99.6);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(105.4);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(115.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(123.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(132.8);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(138.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(148.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(153.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
+//
+//$pdf->setY(158.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", false);
 
 //donateur
 //nom
 $pdf->setY(178.0);
-$pdf->setX(20);
-$pdf->Cell(4, 3,  $utilisateur["prenom"], 0, "R", true);
+$pdf->setX(30);
+$pdf->Cell(4, 3,utf8_decode($utilisateur["nom"] .'  '. $utilisateur["prenom"] )  , 0, "R", true);
 //adresse
 $pdf->setY(187.0);
 $pdf->setX(60);
-$pdf->Cell(4, 3,  $adherent["adr1"], 0, "R", true);
+$pdf->Cell(4, 3,utf8_decode($adherent["adr1"]), 0, "R", true);
 //code postal
 $pdf->setY(193.2);
 $pdf->setX(35);
-$pdf->Cell(4, 3,  $adherent["adr2"], 0, "R", true);
+$pdf->Cell(4, 3,utf8_decode($adherent["adr2"]), 0, "R", true);
 //commune
 $pdf->setY(193.2);
-$pdf->setX(80);
-$pdf->Cell(4, 3,  $adherent["adr3"], 0, "R", true);
+$pdf->setX(100);
+$pdf->Cell(4, 3,utf8_decode($adherent["adr3"]), 0, "R", true);
 //la somme de 
 $pdf->setY(201.50);
 $pdf->setX(175);
-$pdf->Cell(4, 3,  $montant['sum_montant'], 0, "R", true);
+$pdf->Cell(4, 3, utf8_decode($montant['sum_montant']) , 0, "R", true);
 //somme en toute lettres
 
 $ChiffreEnLettre=new ChiffreEnLettre ;
@@ -153,20 +153,20 @@ $pdf->Cell(4, 3,  date("d-m-Y"), 0, "R", true);
 
 
 //Mode de versement
-
-$pdf->setY(158.0);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
+//
+//$pdf->setY(158.0);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", true);
 
 //mode versement
 
-$pdf->setY(232.5);
-$pdf->setX(12);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
-
-$pdf->setY(232.5);
-$pdf->setX(50);
-$pdf->Cell(4, 3,  'X', 0, "R", true);
+//$pdf->setY(232.5);
+//$pdf->setX(12);
+//$pdf->Cell(4, 3,  'X', 0, "R", true);
+//
+//$pdf->setY(232.5);
+//$pdf->setX(50);
+//$pdf->Cell(4, 3,  'X', 0, "R", true);
 
 $pdf->setY(241.0);
 $pdf->setX(12);

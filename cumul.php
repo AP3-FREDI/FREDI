@@ -3,10 +3,11 @@ $page = "cumul.php";
 include 'init.php';
 include 'sql.php';
 include 'header.php';
+include 'function\pdf_requete.php';
+
 
 
 $id = $_SESSION['user']['id_utilisateur'];
-$id_utilisateur = $_SESSION['user']['id_utilisateur'];
 echo '<br>';
 echo '<br>';
 echo '<br>';
@@ -33,20 +34,15 @@ try {
   die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
 }
 
-$sql = 'select * from note where id_utilisateur =:id_utilisateur ';
+$sql = 'select * from note where id_utilisateur =:id ';
 
 try {
   $sth = $dbh->prepare($sql);
 
-  $sth->execute(array(":id_utilisateur" => $id_utilisateur,));
+  $sth->execute(array(":id" => $id,));
   $roows = $sth->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
   die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
-}
-
-foreach ($roows as $row) {
-
-  $id_note = $row['id_note'];
 }
 
 ?>
@@ -78,30 +74,34 @@ foreach ($roows as $row) {
     </tr>
 
     <?php
-    foreach ($rows as $row) {
+    foreach ($cumuls as $row) {
       echo '<tr>';
-      echo '<td>' . $row['id_ligue'] . '</td>';
-      echo '<td>' . $row['id_club'] . '</td>';
-      echo '<td>' . $row['id_motif'] . '</td>';
-      echo '<td>' . $row['id_periode'] . '</td>';
-      echo '<td>' . $row['mtperiode'] . '</td>';
-
-      $sql = "SELECT ligue.lib_ligue AS NomLigue, club.lib_club AS NomClub, motif.lib_motif AS NomMotif, periode.lib_periode AS Periode, SUM(ligne.mt_total) AS MtPeriode FROM note,periode,club,adherent,motif,ligue,ligne WHERE periode.est_active=1 AND ligne.id_note=note.id_note AND ligne.id_motif=motif.id_motif AND periode.id_periode=note.id_periode AND note.id_utilisateur=adherent.id_utilisateur AND adherent.id_club=club.id_club AND club.id_ligue=ligue.id_ligue GROUP BY NomLigue,NomClub,NomMotif ;";
+      echo '<td>' . $row['NomLigue'] . '</td>';
+      echo '<td>' . $row['NomClub'] . '</td>';
+      echo '<td>' . $row['NomMotif'] . '</td>';
+      echo '<td>' . $row['Periode'] . '</td>';
+      echo '<td>' . $row['MtPeriode'] . '</td>';
+    }
+      $sql = "SELECT ligue.lib_ligue AS NomLigue, club.lib_club AS NomClub, motif.lib_motif AS NomMotif, periode.lib_periode AS Periode, SUM(ligne.mt_total) AS MtPeriode 
+      FROM note,periode,club,adherent,motif,ligue,ligne 
+      WHERE periode.est_active=1
+      AND note.id_utilisateur=:id
+      AND ligne.id_note=note.id_note 
+      AND ligne.id_motif=motif.id_motif 
+      AND periode.id_periode=note.id_periode 
+      AND note.id_utilisateur=adherent.id_utilisateur 
+      AND adherent.id_club=club.id_club 
+      AND club.id_ligue=ligue.id_ligue 
+      GROUP BY NomLigue,NomClub,NomMotif ;";
       try {
         $sth = $dbh->prepare($sql);
 
-        $sth->execute(array(":note" => $row['id_note']));
-        $rooows = $sth->fetch(PDO::FETCH_ASSOC);
+        $sth->execute(array(":id" => $id));
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
       } catch (PDOException $e) {
-        die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
-      }
-      echo '<td>';
-      if ($row['est_valide'] == '1') {
-        echo '<a href="lignes_frais_modifier.php?id_ligne=' . $rooows['id_ligne'] . '">Modifier</a>&nbsp;';
-      }
-      echo '&nbsp;<a href="supprimer_notes.php?id_ligne=' . $rooows['id_ligne'] . '">Supprimer</a></td>';
-      echo "</tr>";
-    } ?>
+        die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");      
+    } 
+?>
   </table>
 
   <p>Il y a <?php echo count($rows); ?> ligne(s) de frais</p>
