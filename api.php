@@ -1,9 +1,9 @@
 <?php
 //use :
 
-include '../sql.php';
+include 'sql.php';
 
-
+//http://localhost/fredi/api.php?action=login&pseudo=d.dutertre&password=Azertyuiop1234.
 //phase de teste pour savoir ce que l'on recois 
 $insert_get = isset($_GET['insert_get']) ? $_GET['insert_get'] : '';
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -21,13 +21,13 @@ if ($action != '') {
 
     switch ($action) {
 
-        case 'login': /* detecte la connexion */
+        case 'login':
 
-            $result = array('status' => 0, 'msg' => _('session')); /* Statut 0 = session lancer */
+            $result = array('status' => 0, 'msg' => _('session'));
             // $insert_get = isset($_GET['login']) ? $_GET['login'] : '';
             $pseudo = isset($_GET['pseudo']) ? $_GET['pseudo'] : '';
             $password = isset($_GET['password']) ? $_GET['password'] : '';
-            $insert_get = urldecode($insert_get); /* recupere les valeurs pseudo et password */
+            $insert_get = urldecode($insert_get);
 
 
             //   $pseudo = 'd.dutertre';
